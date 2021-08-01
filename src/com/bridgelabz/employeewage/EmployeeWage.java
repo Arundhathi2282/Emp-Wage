@@ -8,23 +8,27 @@ public class EmployeeWage {
 	public static void main(String args[]) {
 		Random random = new Random();
 		int totalSalary = 0;
-		int workingHrs;
+		int workingHrs, numOfHrs=0, numOfDays =0;
 		for (int i = 0; i < 20; i++) {
 			int attendanceCheck = random.nextInt(3);
 			switch (attendanceCheck) {
-			case 1:  System.out.print("Employee is Full time Present");
+			case 1:
 				workingHrs = 8;
 				break;
-			case 2:  System.out.print("Employee is Part time Present");
+			case 2:
 				workingHrs = 4;
 				break;
-			default:  System.out.print("Employee is Absent");
+			default:
 				workingHrs = 0;
 			}
 			int salary = WAGE_PER_HR * workingHrs;
-			System.out.println(" and his salary is : " + salary);
 			totalSalary = totalSalary + salary;
+			numOfHrs +=workingHrs;
+			numOfDays+=1;
+			if(numOfDays == 20 || numOfHrs == 100){
+			    System.out.println("Employee salary for a month is : "+totalSalary);
+			    break;
+			}
 		}
-		System.out.println("Total Salary of an Employee for a month is : " + totalSalary);
 	}
 }
